@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/barmanji/Downloads/ColorWall/1329542.jpeg' 

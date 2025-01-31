@@ -1,0 +1,31 @@
+[manager]
+prepend_keymap = [
+{ on = "<C-o>", run = '''
+        shell '~/scripts/set_wallpaper.sh "$@"'
+        ''' ,desc = "Set wallpaper to selected image" },
+#Nautilus - GUI FileManager
+{ on = "<C-Enter>", run = '''
+        shell 'nautilus "$@" & disown'
+        ''', desc = "Create current tab" },
+#GO TO-
+{ on = [ "g", "c" ], run = 'cd ~/Downloads/ColorWall/', desc = "Go ColorWall" },
+{ on = [ "g", "d" ], run = 'cd ~/Downloads/', desc = "Go Downloads" },
+{ on = [ "g", "D" ], run = 'cd ~/Documents/', desc = "Go Documents" },
+{ on = [ "g", "p" ], run = 'cd ~/Documents/projects/', desc = "Go Projects" },
+{ on = [ "g", "f" ], run = 'cd ~/Downloads/FirefoxDownload/', desc = "Go FirefoxDownload" },
+{ on = [ "g", "P" ], run = 'cd ~/Pictures/', desc = "Go at Pictures" },
+{ on = [ "g", "V" ], run = 'cd ~/Videos/OBS/', desc = "Go at Videos" },
+{ on = [ "g", "v" ], run = 'cd ~/Videos/OBS/', desc = "Go at Videos/Obs" },
+{ on = [ "g", "t" ], run = 'arrow -10000', desc = "Go at top" },
+{ on = [ "g", "b" ], run = 'arrow 10000', desc = "Go at bottom" },
+
+#Sorting-
+{ on = [ "s", "m" ], run = 'sort mtime', desc = "Sort by last modified time" },
+{ on = [ "s", "t" ], run = 'sort btime --reverse', desc = "Sort by birth time" },
+{ on = [ "s", "a" ], run = 'sort alphabetical', desc = "Sort alphabetically, e.g. 1.md < 10.md < 2.md" },
+{ on = [ "s", "n" ], run = 'sort natural', desc = "Sort naturally, e.g. 1.md < 2.md < 10.md" },
+{ on = [ "s", "s" ], run = 'sort size', desc = "Sort by file size" },
+
+#Hidden File-
+{ on = "<C-h>", run = 'hidden toggle', desc = "Hidden Show" },
+]

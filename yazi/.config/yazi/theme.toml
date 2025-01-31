@@ -1,0 +1,27 @@
+# [flavor]
+# dark = "dracula"
+# light = "tokyo-night"
+
+[filetype]
+rules = [
+	# Images
+	{ mime = "image/*", fg = "yellow" },
+
+	# Videos
+	{ mime = "video/*", fg = "magenta" },
+	{ mime = "audio/*", fg = "magenta" },
+
+	# Empty files
+	{ mime = "inode/empty", fg = "cyan" },
+
+	# Orphan symbolic links
+	{ name = "*", is = "orphan", fg = "red" },
+
+	# ...
+
+	# Fallback
+	# { name = "*", fg = "white" },
+	{ name = "*/", fg = "blue" }
+]
+
+
