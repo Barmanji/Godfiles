@@ -7,7 +7,7 @@ WALLPAPERS_DIR="/home/barmanji/Downloads/ColorWall/"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 # Change interval (15 minutes)
-INTERVAL=$((15 * 60))  # 15 min in seconds
+INTERVAL=$((60*60))  # 15 min in seconds
 
 # Start swww-daemon if not already running
 if ! pgrep -x "swww-daemon" > /dev/null; then
@@ -24,7 +24,7 @@ while true; do
         echo "$WALLPAPER" > "$HOME/.current_wallpaper"  # Save the wallpaper path
 
         # Apply wallpaper with swww
-        swww img "$WALLPAPER" --transition-type grow
+        swww img "$WALLPAPER" --transition-type wave --transition-step 100 --transition-duration 1 --transition-fps 255
 
         # Update Hyprlock config with new wallpaper path (only in the background section)
         sed -i "/background {/,/}/s|path = .*|path = $WALLPAPER|" "$HYPRLOCK_CONFIG"
