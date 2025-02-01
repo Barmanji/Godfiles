@@ -7,7 +7,7 @@ WALLPAPERS_DIR="/home/barmanji/Downloads/ColorWall/"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 # Change interval (15 minutes)
-INTERVAL=$((60*60))  # 15 min in seconds
+# INTERVAL=$((60*60))  # 15 min in seconds
 
 # Start swww-daemon if not already running
 if ! pgrep -x "swww-daemon" > /dev/null; then
@@ -15,13 +15,13 @@ if ! pgrep -x "swww-daemon" > /dev/null; then
     sleep 1  # Give it a moment to start
 fi
 
-while true; do
+# while true; do //after Interval time change
     # Select a random wallpaper with valid extensions
     WALLPAPER=$(find "$WALLPAPERS_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" -o -iname "*.bmp" -o -iname "*.tiff" -o -iname "*.webp" \) | shuf -n 1)
 
     # Apply wallpaper if found
     if [[ -n "$WALLPAPER" ]]; then
-        echo "$WALLPAPER" > "$HOME/.current_wallpaper"  # Save the wallpaper path
+        echo "$WALLPAPER" > "/home/barmanji/.config/hypr/current_wallpaper.txt"  # Save the wallpaper path
 
         # Apply wallpaper with swww
         swww img "$WALLPAPER" --transition-type wave --transition-step 100 --transition-duration 1 --transition-fps 255
@@ -35,7 +35,7 @@ while true; do
         echo "No valid wallpapers found in $WALLPAPERS_DIR"
     fi
 
-    sleep "$INTERVAL"  # Wait before changing again
+    # sleep "$INTERVAL"  # Wait before changing again
 done
 
 

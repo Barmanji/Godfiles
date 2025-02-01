@@ -3,7 +3,7 @@
 notif="$HOME/.config/swaync/images/bell.png"
 
 # Get the full path and name of the current wallpaper
-currentImageFullPath=$(cat ~/.config/hypr/current_wallpaper.txt)
+currentImageFullPath=$(swww query | grep -oP 'image: \K.*')
 currentImageNameOnly=$(basename "$currentImageFullPath")
 PARENT_PID=$(ps -o ppid= -p $$)
 
@@ -26,14 +26,14 @@ if [[ "$user_input" == "y" || "$user_input" == "Y" ]]; then
     echo "Type: y for (yes) || n/<Enter> for (no)"
     rm -i "$currentImageFullPath"
 
-    notify-send -e -u low -i "$notif" "Current Image is Deleted" & exec ~/scripts/change_wallpapers.sh
+    notify-send -e -u low -i "$notif" "Current Image is Deleted" & exec ~/.config/swww/swww.sh
 
     # Kill the terminal
 elif [[ "$user_input" == "f" || "$user_input" == "F" ]]; then
     echo "Opening file manager (Nautilus)..."
 
     # Open the current image path in Nautilus
-    nautilus "$currentImageFullPath" & exec ~/scripts/change_wallpapers
+    nautilus "$currentImageFullPath" & exec ~/.config/swww/swww.sh
 
     # Wait for 2 seconds
     sleep 10
