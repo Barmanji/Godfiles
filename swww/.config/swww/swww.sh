@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 # Wallpaper directory
 WALLPAPERS_DIR="/home/barmanji/Downloads/ColorWall/"
@@ -7,7 +7,7 @@ WALLPAPERS_DIR="/home/barmanji/Downloads/ColorWall/"
 HYPRLOCK_CONFIG="$HOME/.config/hypr/hyprlock.conf"
 
 # Change interval (15 minutes)
-# INTERVAL=$((60*60))  # 15 min in seconds
+INTERVAL=$((60*60))  # 15 min in seconds
 
 # Start swww-daemon if not already running
 if ! pgrep -x "swww-daemon" > /dev/null; then
@@ -35,7 +35,7 @@ fi
         echo "No valid wallpapers found in $WALLPAPERS_DIR"
     fi
 
-    # sleep "$INTERVAL"  # Wait before changing again
-done
+    sleep "$INTERVAL"  # Wait before changing again
+# done
 
 
