@@ -23,7 +23,12 @@ if [[ -n "$WALLPAPER" ]]; then
     echo "$WALLPAPER" > "/home/barmanji/.config/hypr/current_wallpaper.txt"  # Save the wallpaper path
 
     # Apply wallpaper with swww
-    swww img "$WALLPAPER" --transition-type wave --transition-step 100 --transition-duration 1 --transition-fps 255
+    swww img "$WALLPAPER"\
+        --transition-type wave\
+        --transition-angle 150\
+        --transition-step 100\
+        --transition-duration 1\
+        --transition-fps 255
 
     # Update Hyprlock config with new wallpaper path (only in the background section)
     sed -i "/background {/,/}/s|path = .*|path = $WALLPAPER|" "$HYPRLOCK_CONFIG"

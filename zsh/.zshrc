@@ -106,7 +106,7 @@ alias treenode='tree -I node_modules/'
 
 #---- My special Shortcuts -----#
 alias i3rwallpaper="~/scripts/i3_random_wallpapers.sh" #Wallpaper randomizer script
-alias rwallpaper="~/scripts/change_wallpapers.sh"
+alias rwallpaper="~/.config/swww/swww.sh"
 alias menubar='gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar' #Set True or False for menubar/Topbar
 alias gapsDisable='~/scripts/gaps_rounding_disable.sh'
 alias gapsEnable='~/scripts/gaps_rounding_enable.sh'
@@ -130,7 +130,6 @@ alias sudonvim='sudo -E nvim '
 alias sn='sudo -E nvim '
 alias pd='pnpm dev'
 alias pi='pnpm install'
-alias pi$1='pnpm install "$1"'
 ############################## FUNCTIONAL SHORTCUTS ##################################
 #Git SSH copy and see
 function gssh() { gh repo view "$1" --json sshUrl }
