@@ -40,7 +40,7 @@ return {
                 hidden = true  -- Include hidden files
             })
         end, { desc = '[S]earch [F]iles (including dotfiles)' })
-        vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
+        -- vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
         vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
         vim.keymap.set('n', '<leader>sg', function()
             require('telescope.builtin').live_grep({
