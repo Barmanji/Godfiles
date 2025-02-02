@@ -25,8 +25,9 @@ if [[ -n "$WALLPAPER" ]]; then
     # Apply wallpaper with swww
     swww img "$WALLPAPER"\
         --transition-type wave\
-        --transition-angle 150\
-        --transition-step 100\
+        --transition-angle 135\
+        --transition-wave 30,20\
+        --transition-step 200\
         --transition-duration 1\
         --transition-fps 255
 
