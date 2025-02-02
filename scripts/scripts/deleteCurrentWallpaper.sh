@@ -26,7 +26,7 @@ if [[ "$user_input" == "y" || "$user_input" == "Y" ]]; then
     echo "Type: y for (yes) || n/<Enter> for (no)"
     rm -i "$currentImageFullPath"
 
-    notify-send -e -u low -i "$notif" "Current Image is Deleted" & exec ~/.config/swww/swww.sh
+    notify-send -e -u critical -i "$notif" "Current Image is Deleted" & exec ~/.config/swww/swww.sh
 
     # Kill the terminal
 elif [[ "$user_input" == "f" || "$user_input" == "F" ]]; then

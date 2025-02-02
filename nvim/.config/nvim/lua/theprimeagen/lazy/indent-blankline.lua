@@ -11,7 +11,7 @@ return {
                 buftypes = { "terminal", "nofile" }, -- Excluded buffer types
             },
             scope = {
-                enabled = true, -- Enable scope highlighting
+                enabled = false, -- Enable scope highlighting
                 show_start = true, -- Show the start of the current scope
                 show_end = false, -- Optionally show the end of the scope
             },

@@ -19,12 +19,12 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 -- Remap <leader>w to include auto-indent, remove trailing spaces, and preserve cursor position
 vim.keymap.set("n", "<leader>w", function()
     local pos = vim.api.nvim_win_get_cursor(0)  -- Save current cursor position
-    vim.cmd(":silent! %s/\\s\\+$//e")  -- Remove trailing spaces
-    vim.cmd("normal! gg=G")  -- Auto-indent the whole document
-    vim.api.nvim_win_set_cursor(0, pos)  -- Restore cursor position
-    vim.cmd(":w")  -- Save the file
+    vim.cmd(":silent! %s/\\s\\+$//e")           -- Remove trailing spaces
+    vim.cmd("normal! gg=G")                     -- Auto-indent the whole document
+    vim.api.nvim_win_set_cursor(0, pos)         -- Restore cursor position
+    vim.cmd(":nohlsearch")                      -- Clear search highlights
+    vim.cmd(":w")                               -- Save the file
 end)
-
 --vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
 --vim.keymap.set("n", "<leader>vwm", function()
  --   require("vim-with-me").StartVimWithMe()

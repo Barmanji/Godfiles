@@ -1,12 +1,10 @@
 {
     "layer": "top",
-        "position": "top",
-        "reload_style_on_change": true,
-        "modules-left": ["custom/notification","clock","custom/pacman","tray"],
-        "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["pulseaudio","group/expand","bluetooth","network","battery","custom/power"],
-
-
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": ["custom/notification","clock","custom/pacman","tray"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["pulseaudio","custom/cava_mviz","group/expand","bluetooth","network","battery","custom/power"],
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -17,6 +15,10 @@
         "persistent-workspaces": {
             "*": [ 1,2,3,4,5 ]
         }
+    },
+    "custom/cava_mviz": {
+        "exec": "$HOME/.config/waybar/scripts/waybarCava.sh",
+        "format": "{}"
     },
     "custom/power": {
         "format": "⏻",
@@ -56,8 +58,8 @@
             "default": [" "]
         },
         "on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
-         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ ",
-    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ ",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "on-click-right": "pavucontrol"
     },
     "network": {
@@ -138,8 +140,8 @@
     "cpu": {
         "format": "󰻠",
         "tooltip": true,
-                "on-click": "gnome-calculator",
-                "on-click-right": "zen-browser"
+        "on-click": "gnome-calculator",
+        "on-click-right": "zen-browser"
 
     },
     "memory": {
@@ -154,6 +156,6 @@
     "tray": {
         "icon-size": 14,
         "spacing": 10
-    }
+    },
 }
 
