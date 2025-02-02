@@ -28,7 +28,7 @@ source = auto
 
 [output]
 method = raw
-channels = mono
+channels = stereo
 raw_target = /dev/stdout
 data_format = ascii
 ascii_max_range = 7
