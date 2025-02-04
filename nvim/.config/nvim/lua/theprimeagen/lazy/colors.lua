@@ -11,6 +11,7 @@ function ColorMyPencils(color)
 -- Change color for specific diagnostic messages
 vim.api.nvim_set_hl(0, 'DiagnosticUnnecessary', { fg = '#808080' }) -- Unused or unnecessary variables
 
+
 end
 
 return {

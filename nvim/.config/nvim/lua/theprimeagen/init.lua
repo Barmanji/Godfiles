@@ -40,7 +40,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = ThePrimeagenGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
@@ -62,25 +62,47 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
     end
 })
---trying to add git signs on left hand in place of H and E but its not suppose to be working it  seems
-require('lazy').setup({ -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-    },
-  })
+-- Highlight the group
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--   callback = function(event)
+--     local client = vim.lsp.get_client_by_id(event.data.client_id)
+--     if not client then return end
+--
+--     -- Document Highlight
+--     if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+--       local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+--
+--       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+--         buffer = event.buf,
+--         group = highlight_augroup,
+--         callback = function()
+--           vim.lsp.buf.document_highlight()
+--         end,
+--       })
+--
+--       vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+--         buffer = event.buf,
+--         group = highlight_augroup,
+--         callback = function()
+--           vim.lsp.buf.clear_references()
+--         end,
+--       })
+--     end
+--
+--     -- Inlay Hints Toggle
+--     if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+--       vim.keymap.set('n', '<leader>th', function()
+--         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+--       end, { desc = '[T]oggle Inlay [H]ints' })
+--     end
+--   end,
+-- })
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>') -- removed highlight bullshittery with / or ?
 ColorMyPencils()
 -- Set clipboard to use system clipboard
 vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
+    vim.opt.clipboard = 'unnamedplus'
 end)
-
