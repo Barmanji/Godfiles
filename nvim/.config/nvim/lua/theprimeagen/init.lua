@@ -80,5 +80,7 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 ColorMyPencils()
 -- Set clipboard to use system clipboard
-vim.opt.clipboard = "unnamedplus"  -- Keep system clipboard
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
