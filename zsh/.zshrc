@@ -116,20 +116,23 @@ alias copy='wl-copy'
 alias clock='tty-clock -t -C'
 alias pipe='pipes.sh -t'
 alias pipes='pipes.sh -t'
+alias so='source ~/.zshrc && tmux source ~/.tmux.conf'
 
 #---- Vim related ----#
 alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:latest'
 alias vp='nvim ~/Documents/projects/'
 alias vim='nvim' #Vim will open Nvim-
-alias v='nvim .'
+alias v='nvim'
 alias vi='nvim'
-alias sv='sudo -E nvim .'
+alias sv='sudo -E nvim'
 alias snvim='sudo -E nvim .'
 alias svim='sudo -E nvim .'
-alias sudonvim='sudo -E nvim '
-alias sn='sudo -E nvim '
+alias sudonvim='sudo -E nvim'
+alias sn='sudo -E nvim'
 alias pd='pnpm dev'
 alias pi='pnpm install'
+alias ts='~/scripts/tmux-sessionizer'
+
 ############################## FUNCTIONAL SHORTCUTS ##################################
 #Git SSH copy and see
 function gssh() { gh repo view "$1" --json sshUrl }
