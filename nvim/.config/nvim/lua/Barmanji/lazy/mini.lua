@@ -79,7 +79,6 @@ return {
                 only_in_normal_buffers = true,
             })
             vim.keymap.set("n", "<leader>cw", function() miniTrailspace.trim()  end, { desc = "Erase Whitespace" })
-
             -- Ensure highlight never reappears by removing it on CursorMoved
             vim.api.nvim_create_autocmd("CursorMoved", {
                 pattern = "*",
