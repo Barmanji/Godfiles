@@ -50,7 +50,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>cx", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>mp", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
@@ -61,13 +61,13 @@ vim.keymap.set("n", "<leader>ms", "<cmd>CellularAutomaton scramble<CR>");
 -- end)
 
 --split management
--- vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
--- -- split window vertically
--- vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
--- -- split window horizontally
--- vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
--- -- close current split window
--- vim.keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+-- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+-- split window horizontally
+vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+-- close current split window
+vim.keymap.set("n", "<leader>x", "<cmd>close<CR>", { desc = "Close current split" })
 
 -- Copy filepath to the clipboard
 vim.keymap.set("n", "<leader>fp", function()

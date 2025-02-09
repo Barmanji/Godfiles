@@ -129,11 +129,14 @@ return {
             { "<leader>pk",       function() require("snacks").picker.keymaps() end,                                 desc = "Search Keymaps (Snacks Picker)" },
 
             -- Git Stuff
-            -- { "<leader>gbr", function() require("snacks").picker.git_branches({ layout = "selwect" }) end, desc = "Pick and Switch Git Branches" },
-            -- { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
-            { "gr",               function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
-
+    { "<leader>gbr", function() require("snacks").picker.git_branches() end, desc = "Git Branches" },
+    { "<leader>gl", function() require("snacks").picker.git_log() end, desc = "Git Log" },
+    { "<leader>gL", function() require("snacks").picker.git_log_line() end, desc = "Git Log Line" },
+    { "<leader>GS", function() require("snacks").picker.git_status() end, desc = "Git Status" },
+    { "<leader>Gs", function() require("snacks").picker.git_stash() end, desc = "Git Stash" },
             -- Other Utils
+            { "gd",               function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" },
+            { "gr",               function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
             { "<leader>sq",       function() require("snacks").picker.qflist() end,                                  desc = "Quickfix List" },
             { "<leader>sd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
             { "<leader>sD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
