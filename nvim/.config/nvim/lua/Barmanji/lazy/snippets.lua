@@ -34,10 +34,11 @@ return {
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
                 }),
                 sources = cmp.config.sources({
+                    { name = "luasnip" }, -- snippets
                     { name = "nvim_lsp" },
-                    { name = "luasnip" }, -- For luasnip users.
-                }, {
-                    { name = "buffer" },
+                    { name = "buffer" }, -- text within current buffer
+                    { name = "path" }, -- file system paths
+                    { name = "tailwindcss-colorizer-cmp" },
                 }),
             })
         end,
