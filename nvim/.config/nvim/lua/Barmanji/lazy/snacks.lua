@@ -41,14 +41,14 @@ return {
                             min_width = 80,
                             height = 0.4,
                             min_height = 10,
-                            bo = "vertical",
+                            box = "vertical",
                             border = "rounded",
                             title = "{title}",
                             title_pos = "center",
                             { win = "input",   height = 1,          border = "bottom" },
                             { win = "list",    border = "none" },
-                            { win = "preview", title = "{preview}", width = 0.6,      height = 0.4, border = "top" },
-                        }
+                            { win = "preview", title = "{preview}", height = 0.4,     border = "top" },
+                        },
                     },
                     telescope = {
                         reverse = true, -- set to false for search bar to be on top
@@ -111,10 +111,7 @@ return {
         },
         -- NOTE: Keymaps
         keys = {
-            { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
-            { "<leader>fr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
 
-            -- { "<leader><space>", function() require("snacks").picker.smart() end,                                              desc = "Smart Find Files" },
             { "<leader>lg",       function() require("snacks").lazygit() end,                                        desc = "Lazygit" },
             { "<leader>gl",       function() require("snacks").lazygit.log() end,                                    desc = "Lazygit Logs" },
             { "<leader>es",       function() require("snacks").explorer() end,                                       desc = "Open Snacks Explorer" },
@@ -124,18 +121,21 @@ return {
             -- Snacks Picker
             { "<leader>pf",       function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
             { "<leader>pn",       function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Nvim Config File" },
-            { "<leader>ps",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
+            { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
             { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
             { "<leader>pk",       function() require("snacks").picker.keymaps() end,                                 desc = "Search Keymaps (Snacks Picker)" },
+            { "<leader>ps", function() require("snacks").picker.smart() end,                                              desc = "Smart Find Files" },
+            { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
+            { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
 
             -- Git Stuff
-    { "<leader>gbr", function() require("snacks").picker.git_branches() end, desc = "Git Branches" },
-    { "<leader>gl", function() require("snacks").picker.git_log() end, desc = "Git Log" },
-    { "<leader>gL", function() require("snacks").picker.git_log_line() end, desc = "Git Log Line" },
-    { "<leader>GS", function() require("snacks").picker.git_status() end, desc = "Git Status" },
-    { "<leader>Gs", function() require("snacks").picker.git_stash() end, desc = "Git Stash" },
+            { "<leader>gbr",      function() require("snacks").picker.git_branches({ layout = "select" }) end,       desc = "Git Branches" },
+            { "<leader>gl",       function() require("snacks").picker.git_log() end,                                 desc = "Git Log" },
+            { "<leader>gL",       function() require("snacks").picker.git_log_line() end,                            desc = "Git Log Line" },
+            { "<leader>GS",       function() require("snacks").picker.git_status() end,                              desc = "Git Status" },
+            { "<leader>Gs",       function() require("snacks").picker.git_stash() end,                               desc = "Git Stash" },
             -- Other Utils
-            { "gd",               function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" },
+            -- { "gd",               function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" }, -- already in init.lua
             { "gr",               function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
             { "<leader>sq",       function() require("snacks").picker.qflist() end,                                  desc = "Quickfix List" },
             { "<leader>sd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
