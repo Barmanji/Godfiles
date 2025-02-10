@@ -77,40 +77,40 @@ autocmd('LspAttach', {
     end
 })
 -- Highlight the group
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(event)
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if not client then return end
-
-        -- Document Highlight
-        if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = function()
-                    vim.lsp.buf.document_highlight()
-                end,
-            })
-
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = function()
-                    vim.lsp.buf.clear_references()
-                end,
-            })
-        end
-
-        -- Inlay Hints Toggle
-        -- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-        --   vim.keymap.set('n', '<leader>th', function()
-        --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-        --   end, { desc = '[T]oggle Inlay [H]ints' })
-        -- end
-    end,
-})
+-- vim.api.nvim_create_autocmd('LspAttach', {
+--     callback = function(event)
+--         local client = vim.lsp.get_client_by_id(event.data.client_id)
+--         if not client then return end
+--
+--         -- Document Highlight
+--         if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+--             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+--
+--             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+--                 buffer = event.buf,
+--                 group = highlight_augroup,
+--                 callback = function()
+--                     vim.lsp.buf.document_highlight()
+--                 end,
+--             })
+--
+--             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+--                 buffer = event.buf,
+--                 group = highlight_augroup,
+--                 callback = function()
+--                     vim.lsp.buf.clear_references()
+--                 end,
+--             })
+--         end
+--
+--         -- Inlay Hints Toggle
+--         -- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+--         --   vim.keymap.set('n', '<leader>th', function()
+--         --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+--         --   end, { desc = '[T]oggle Inlay [H]ints' })
+--         -- end
+--     end,
+-- })
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
