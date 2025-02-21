@@ -1,6 +1,43 @@
 return {
     -- Comments
-    { 'echasnovski/mini.comment', version = false },
+    {
+        'echasnovski/mini.comment',
+        version = false,
+        dependencies = {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
+        -- Module mappings. Use `''` (empty string) to disable one.
+        -- mappings = {
+        -- NOTE: Toggle comment (like `gcip` - comment inner paragraph) for both
+        --   -- Normal and Visual modes
+        --   comment = 'gc',
+        --   -- Toggle comment on current line
+        --   comment_line = 'gcc',
+        --   -- Toggle comment on visual selection
+        --   comment_visual = 'gc',
+        --   -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        --   -- Works also in Visual mode if mapping differs from `comment_visual`
+        --   textobject = 'gc',
+        -- },
+        config = function()
+            -- disable the autocommand from ts-context-commentstring
+            require('ts_context_commentstring').setup {
+                enable_autocmd = false,
+            }
+            require("mini.comment").setup {
+                -- tsx, jsx, html , svelte comment support
+                options = {
+                    custom_commentstring = function()
+                        return require('ts_context_commentstring.internal').calculate_commentstring({
+                                key =
+                                'commentstring'
+                            })
+                            or vim.bo.commentstring
+                    end,
+                },
+            }
+        end
+    },
     -- File explorer (this works properly with oil unlike nvim-tree)
     {
         'echasnovski/mini.files',
@@ -18,10 +55,10 @@ return {
             vim.keymap.set("n", "<leader>ef", function()
                 MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
                 MiniFiles.reveal_cwd()
-            end, {desc = "Toggle into currently opened file"})
+            end, { desc = "Toggle into currently opened file" })
         end,
     },
-    -- Surround
+    -- NOTE: Surround
     {
         "echasnovski/mini.surround",
         event = { "BufReadPre", "BufNewFile" },
@@ -68,7 +105,7 @@ return {
             silent = false,
         },
     },
-    -- Get rid of whitespace
+    -- NOTE: Get rid of whitespace
     {
         "echasnovski/mini.trailspace",
         event = { "BufReadPost", "BufNewFile" },
@@ -78,7 +115,7 @@ return {
             miniTrailspace.setup({
                 only_in_normal_buffers = true,
             })
-            vim.keymap.set("n", "<leader>cw", function() miniTrailspace.trim()  end, { desc = "Erase Whitespace" })
+            vim.keymap.set("n", "<leader>cw", function() miniTrailspace.trim() end, { desc = "Erase Whitespace" })
             -- Ensure highlight never reappears by removing it on CursorMoved
             vim.api.nvim_create_autocmd("CursorMoved", {
                 pattern = "*",
@@ -88,7 +125,7 @@ return {
             })
         end,
     },
-    -- Split & join
+    -- NOTE: Split & join
     {
         "echasnovski/mini.splitjoin",
         config = function()
@@ -96,8 +133,8 @@ return {
             miniSplitJoin.setup({
                 mappings = { toggle = "" }, -- Disable default mapping
             })
-            vim.keymap.set({ "n", "x" }, "sj", function() miniSplitJoin.join()end, { desc = "Join arguments" })
-            vim.keymap.set({ "n", "x" }, "sk", function() miniSplitJoin.split()end, { desc = "Split arguments" })
+            vim.keymap.set({ "n", "x" }, "sj", function() miniSplitJoin.join() end, { desc = "Join arguments" })
+            vim.keymap.set({ "n", "x" }, "sk", function() miniSplitJoin.split() end, { desc = "Split arguments" })
         end,
     },
 }

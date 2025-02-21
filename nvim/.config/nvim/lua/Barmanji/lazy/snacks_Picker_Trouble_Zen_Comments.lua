@@ -12,6 +12,44 @@ return {
                     cycle = true,
                 }
             },
+            image = {
+                formats = {
+                    "png",
+                    "jpg",
+                    "jpeg",
+                    "gif",
+                    "bmp",
+                    "webp",
+                    "tiff",
+                    "heic",
+                    "avif",
+                    "mp4",
+                    "mov",
+                    "avi",
+                    "mkv",
+                    "webm",
+                    "pdf",
+                },
+                force = true,
+                doc = {
+                    -- enable image viewer for documents
+                    -- a treesitter parser must be available for the enabled languages.
+                    -- supported language injections: markdown, html
+                    enabled = true,
+                    -- render the image inline in the buffer
+                    -- if your env doesn't support unicode placeholders, this will be disabled
+                    -- takes precedence over `opts.float` on supported terminals
+                    inline = true,
+                    -- render the image in a floating window
+                    -- only used if `opts.inline` is disabled
+                    float = true,
+                    max_width = 80,
+                    max_height = 40,
+                    -- Set to `true`, to conceal the image text when rendering inline.
+                    -- (experimental)
+                    conceal = false,
+                },
+            },
             quickfile = {
                 enabled = true,
                 exclude = { "latex" },
@@ -92,19 +130,14 @@ return {
                     },
                 }
             },
-            dashboard = {
+            dashboard = { -- WHY DO I HAVE THIS BULLSHIP? Becuase i love ship just dont want to ride inside em :_)
+                -- {THIS SUCKS}
                 enabled = false,
                 sections = {
                     { section = "header" },
                     { section = "keys",   gap = 1, padding = 1 },
                     { section = "startup" },
                     {
-                        section = "terminal",
-                        cmd = "ascii-image-converter ~/Desktop/Others/profiles.JPG -C -c",
-                        random = 10,
-                        pane = 2,
-                        indent = 4,
-                        height = 30,
                     },
                 },
             },
@@ -124,7 +157,7 @@ return {
             { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
             { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
             { "<leader>pk",       function() require("snacks").picker.keymaps() end,                                 desc = "Search Keymaps (Snacks Picker)" },
-            { "<leader>ps", function() require("snacks").picker.smart() end,                                              desc = "Smart Find Files" },
+            { "<leader>ps",       function() require("snacks").picker.smart() end,                                   desc = "Smart Find Files" },
             { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
             { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
 
@@ -135,8 +168,8 @@ return {
             { "<leader>GS",       function() require("snacks").picker.git_status() end,                              desc = "Git Status" },
             { "<leader>Gs",       function() require("snacks").picker.git_stash() end,                               desc = "Git Stash" },
             -- Other Utils
-            -- { "gd",               function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" }, -- already in init.lua
-            { "gr",               function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
+            { "<leader>gd",       function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" },         -- already in init.lua
+            { "<leader>gr",       function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
             { "<leader>sq",       function() require("snacks").picker.qflist() end,                                  desc = "Quickfix List" },
             { "<leader>sd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
             { "<leader>sD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
@@ -158,13 +191,13 @@ return {
                         color = "error",
                         alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },
                     },
-                    TODO = { icon = " ", color = "info" },
+                    TODO = { icon = " ", color = "info", alt = { "READ", "READ ABOUT", "ABOUT", "ABOUTS" } },
                     HACK = { icon = " ", color = "warning", alt = { "DON SKIP" } },
                     WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
                     PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
                     NOTE = { icon = " ", color = "hint", alt = { "INFO", "READ", "COLORS" } },
-                    TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
-                },
+                    TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED", "FAIL", "PASS", "APROOVE", "APROOVED" } },
+                }, --
             })
         end,
         keys = {

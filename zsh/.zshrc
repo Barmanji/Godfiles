@@ -117,7 +117,6 @@ alias clock='tty-clock -t -C'
 alias pipe='pipes.sh -t'
 alias pipes='pipes.sh -t'
 alias so='source ~/.zshrc'
-alias so='tmux source ~/.tmux.conf'
 
 #---- Vim related ----#
 alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:latest'
