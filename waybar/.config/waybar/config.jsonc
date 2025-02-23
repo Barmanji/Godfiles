@@ -16,10 +16,10 @@
             "*": [ 1,2,3,4,5 ]
         }
     },
-    "custom/cava_mviz": {
-        "exec": "$HOME/.config/waybar/scripts/waybarCava.sh",
-        "format": "{}"
-    },
+    // "custom/cava_mviz": {
+    //     "exec": "$HOME/.config/waybar/scripts/waybarCava.sh",
+    //     "format": "{}"
+    // },
     "custom/power": {
         "format": "⏻",
         "exec": "echo ; echo 󰟡 power // blur",
