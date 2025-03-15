@@ -1,4 +1,3 @@
-
 #!/usr/bin/env bash
 
 # Dependencies: grim, slurp, tesseract, wl-clipboard, notify-send
