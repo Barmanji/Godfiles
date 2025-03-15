@@ -9,7 +9,7 @@ Still if you want to try, go ahead.
 - Do it for real(Without Script!). I will be giving arch related install methods (yay/pacman), if you are in other distro or Mac figure it out.
 #### Packages
 - I have all packages in [Packages]("https://github.com/Barmanji/Godfiles/tree/master/InstalledArchPackages")
-- Some additional ones for [OCR-Screen-Text](https://github.com/TheBrightSoul/Screen-Text-Reader) capture Made by my friend [TheBrightSoul](https://github.com/TheBrightSoul) Drop him a follow or block him xd.
+- Some additional ones for [OCR-Screen-Text](https://github.com/TheBrightSoul/Screen-Text-Reader) capture. Made by my friend [TheBrightSoul](https://github.com/TheBrightSoul),Drop him a follow or block him xd.
 - `sudo pacman -5 --nesded tesseract tesseract-data-eng grin slurp wl-clipboard`
 
 #### Install Yay
