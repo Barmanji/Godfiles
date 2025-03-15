@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Dependencies: grim, slurp, tesseract, wl-clipboard, notify-send
+# Dependencies: grim, slurp, tesseract, wl-clipboard, notify-send [sudo pacman -S --needed tesseract tesseract-data-eng grim slurp wl-clipboard]
 
 # Configuration
 TMP_DIR="/tmp/ocr-screenshots"
