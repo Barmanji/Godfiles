@@ -99,15 +99,6 @@
 
                 },
 
-                {
-                    "label":"",
-                    "command": "reboot"
-                },
-                {
-                    "label": "⏻",
-                    "command": "shutdown now"
-                }
-
             ]
         }
     }
