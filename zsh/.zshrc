@@ -132,6 +132,7 @@ alias sn='sudo -E nvim'
 alias pd='pnpm dev'
 alias pi='pnpm install'
 alias ts='~/scripts/tmux-sessionizer'
+alias tss='~/scripts/tmux-sessionizer "$(dirname "$(realpath "$1")")"'
 
 ############################## FUNCTIONAL SHORTCUTS ##################################
 #Git SSH copy and see
