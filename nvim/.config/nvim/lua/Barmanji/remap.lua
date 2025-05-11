@@ -10,12 +10,6 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- They work by default
--- vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
--- vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
--- vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
--- vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
-
 vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
 vim.keymap.set('n', '<leader>zig', '<cmd>LspRestart<cr>')
 
@@ -52,13 +46,6 @@ vim.keymap.set('n', '<leader>F', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>ms', '<cmd>CellularAutomaton scramble<CR>')
 
---split management - DONT USE EM
--- vim.keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
--- -- split window vertically
--- vim.keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
--- -- split window horizontally
--- vim.keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
--- -- close current split window
 vim.keymap.set('n', '<leader>x', '<cmd>close<CR>', { desc = 'Close current split' })
 
 -- Copy filepath to the clipboard

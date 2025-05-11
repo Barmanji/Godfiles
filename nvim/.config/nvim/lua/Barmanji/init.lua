@@ -49,11 +49,29 @@ autocmd('LspAttach', {
     group = BarmanjiGroup,
     callback = function(e)
         local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+        -- Automatically close location list and quickfix windows with q
+        vim.keymap.set("n", "<leader>q", function()
+            local win = vim.api.nvim_get_current_win()
+            local filetype = vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win), 'filetype')
+
+            -- If it's a location list (LSP) or quickfix window, close it
+            if filetype == "qf" or filetype == "loclist" then
+                vim.cmd("q") -- Close window with :q
+            else
+                -- Don't show a message or interfere with other windows
+                -- Simply let Vim handle the normal behavior for non-LSP windows
+                -- You could optionally add more custom behavior here if desired
+                return
+            end
+        end, { noremap = true, silent = true })
+
+        -- Your existing mapping for "gd" (LSP definition)
+        vim.keymap.set("n", "gd", function()
+            vim.lsp.buf.definition()
+        end, opts)
         -- vim.keymap.set("n", "gD", function() vim.lsp.buf.peek_definition() end, opts) -- Opens in a floating window if supported
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
         vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set("n", "<leader>vdf", function() vim.lsp.buf.definition() end, opts)
         vim.keymap.set("n", "<leader>vde", function() vim.lsp.buf.declaration() end, opts)
         vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
         vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
@@ -78,42 +96,3 @@ autocmd('LspAttach', {
         })
     end
 })
--- Highlight the group
--- vim.api.nvim_create_autocmd('LspAttach', {
---     callback = function(event)
---         local client = vim.lsp.get_client_by_id(event.data.client_id)
---         if not client then return end
---
---         -- Document Highlight
---         if client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
---             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
---
---             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
---                 buffer = event.buf,
---                 group = highlight_augroup,
---                 callback = function()
---                     vim.lsp.buf.document_highlight()
---                 end,
---             })
---
---             vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
---                 buffer = event.buf,
---                 group = highlight_augroup,
---                 callback = function()
---                     vim.lsp.buf.clear_references()
---                 end,
---             })
---         end
---
---         -- Inlay Hints Toggle
---         -- if client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
---         --   vim.keymap.set('n', '<leader>th', function()
---         --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
---         --   end, { desc = '[T]oggle Inlay [H]ints' })
---         -- end
---     end,
--- })
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
-ColorMyPencils()

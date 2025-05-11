@@ -47,3 +47,9 @@ vim.opt.mouse = "a"
 
 -- gets rid of line with white spaces
 vim.g.editorconfig = true
+
+-- life saver
+vim.g.netrw_browse_split = 0
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
+

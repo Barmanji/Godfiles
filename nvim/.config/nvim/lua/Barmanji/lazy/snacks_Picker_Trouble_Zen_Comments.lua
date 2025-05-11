@@ -56,6 +56,47 @@ return {
             },
             -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
+                sources = {
+                    explorer = {
+                        layout = { layout = { position = "right" } },
+                        win = {
+                            list = {
+                                keys = {
+                                    ["<BS>"] = "explorer_up", -- BasckSpace
+                                    ["l"] = "confirm",
+                                    ["h"] = "explorer_close", -- close directory
+                                    ["-"] = "explorer_close", -- close directory
+                                    ["a"] = "explorer_add", -- FOLDER ADD
+                                    ["o"] = "explorer_add",
+                                    ["d"] = "explorer_del",
+                                    ["r"] = "explorer_rename",
+                                    ["c"] = "explorer_copy",
+                                    ["m"] = "explorer_move",
+                                    ["O"] = "explorer_open", -- open with system application
+                                    ["P"] = "toggle_preview",
+                                    ["y"] = { "explorer_yank", mode = { "n", "x" } },
+                                    ["p"] = "explorer_paste",
+                                    ["u"] = "explorer_update",
+                                    ["<c-c>"] = "tcd",
+                                    ["<leader>/"] = "picker_grep",
+                                    ["<c-t>"] = "terminal",
+                                    ["F"] = "explorer_focus",
+                                    ["I"] = "toggle_ignored",
+                                    ["."] = "toggle_hidden",
+                                    ["Z"] = "explorer_close_all",
+                                    ["]g"] = "explorer_git_next",
+                                    ["[g"] = "explorer_git_prev",
+                                    ["]d"] = "explorer_diagnostic_next",
+                                    ["[d"] = "explorer_diagnostic_prev",
+                                    ["]w"] = "explorer_warn_next",
+                                    ["[w"] = "explorer_warn_prev",
+                                    ["]e"] = "explorer_error_next",
+                                    ["[e"] = "explorer_error_prev",
+                                },
+                            },
+                        },
+                    },
+                },
                 enabled = true,
                 formatters = {
                     file = {
@@ -130,31 +171,7 @@ return {
                     },
                 },
             },
-            dashboard = { -- WHY DO I HAVE THIS BULLSHIP? Becuase i love ship just dont want to ride inside em :_)
-                -- {THIS SUCKS}
-                enabled = false,
-                sections = {
-                    { section = "header" },
-                    { section = "keys",   gap = 1, padding = 1 },
-                    { section = "startup" },
-                    {
-                    },
-                },
-            },
         },
-        -- HACK: LEARN EM:
-        -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        -- vim.keymap.set("n", "gD", function() vim.lsp.buf.peek_definition() end, opts) -- Opens in a floating window if supported
-        -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-        -- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-
         -- NOTE: Keymaps
         keys = {
             -- Snacks Picker

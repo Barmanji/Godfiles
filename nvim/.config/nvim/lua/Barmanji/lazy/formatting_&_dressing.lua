@@ -34,6 +34,7 @@ return {
           css = { 'prettier' },
           scss = { 'prettier' },
           html = { 'prettier' },
+            java = { 'prettier' },
           json = { 'prettier' },
           yaml = { 'prettier' },
           -- markdown = { "prettier" },
