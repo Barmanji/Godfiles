@@ -8,31 +8,36 @@ window#waybar {
 }
 .modules-left {
     padding: 5px;
-    margin: 0 0 0 8px;
-    border-radius: 7px;
+    margin: 0 0 0 0px;
     /* background: rgba(50, 50, 50, 0.5); */
     /* box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5); */
 }
 .modules-center {
     padding: 5px;
     margin: 2px;
-    border-radius: 7px;
+    /* originally 7px */
+    border-radius: 16px;
     background: rgba(50, 50, 50, 0.5);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 .modules-right {
     padding: 5px;
     margin: 2 8 2 8px;
-    border-radius: 7px;
+    /* originally 7px */
+    border-radius: 16px;
     background: rgba(50, 50, 50, 0.5);
     box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 tooltip {
     background: rgb(50, 50, 50);
 }
+#clock:hover{
+    transition: all 0.3s ease;
+    color: rgba(150, 150, 150, 0.8);
+}
+
 #pulseaudio:hover,
 #custom-power:hover,
-#clock:hover,
 #custom-pacman:hover,
 #custom-notification:hover,
 #bluetooth:hover,
@@ -101,7 +106,7 @@ tooltip {
 /* } */
 #workspaces {
     background: transparent;
-    margin: 2px;
+    margin: 1px;
     padding: 1px;
     min-height: 0;
     border-radius: 16px;
@@ -111,10 +116,18 @@ tooltip {
     margin: 0px 3px;
     border-radius: 16px; /* 16px was original */
     color: #2f354a;
-    background-color: #484847;
+    background-color: #272629;
     transition: all 0.2s ease-in-out;
 }
 
+#workspaces button.empty {
+    color: #524E52;
+    background-color: #524E52;
+    min-width: 8px;
+    border-radius: 16px; /* 16px was original */
+    background-size: 400% 400%;
+    transition: all 0.2s ease-in-out;
+}
 #workspaces button.active {
     color: #cdd6f4;
     background-color: #cdd6f4;
