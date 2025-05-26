@@ -1,32 +1,39 @@
 {
-    "layer": "top",
-    "position": "top",
-    "reload_style_on_change": true,
-    "modules-left": ["custom/notification","clock","custom/pacman","tray"],
-    "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["pulseaudio","custom/cava_mviz","group/expand","bluetooth","network","battery"],
-    "hyprland/workspaces": {
-        "format": "{icon}",
-        "format-icons": {
-            "active": "",
-            "default": "",
-            "empty": ""
-        },
-        "persistent-workspaces": {
-            "*": [ 1,2,3,4,5 ]
-        }
-    },
+    // OLD -
+    // "modules-left": ["custom/notification","clock","custom/pacman","tray","network"],
     // "custom/cava_mviz": {
     //     "exec": "$HOME/.config/waybar/scripts/waybarCava.sh",
     //     "format": "{}"
     // },
+    "layer": "top",
+    "position": "top",
+    "reload_style_on_change": true,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/notification","clock","custom/pacman"],
+    "modules-right": ["pulseaudio","custom/cava_mviz","group/expand","tray","bluetooth","battery"],
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": false,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+    "format": "{icon}",
+    "tooltip": false,
+    "format-icons": {
+      "urgent": "",
+      "active": "",
+      "default": "",
+      "sort-by-number": true
+      }
+    },
     "custom/power": {
         "format": "⏻",
         "exec": "echo ; echo 󰟡 power // blur",
         "on-click": "$HOME/.config/hypr/scripts/Wlogout.sh",
         "on-click-right": "$HOME/.config/hypr/scripts/ChangeBlur.sh",
         "interval": 86400, // once every day
-        "tooltip": true,
+        "tooltip": true
     },
     "custom/notification": {
         "tooltip": false,
@@ -36,7 +43,7 @@
         "escape": true
     },
     "clock": {
-        "format": "{:%I:%M %p} ",
+        "format": "{:%I:%M %p | %a'%d %b}",
         "interval": 1,
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
@@ -62,15 +69,16 @@
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "on-click-right": "pavucontrol"
     },
-    "network": {
-        "format-wifi": "",
-        "format-ethernet":"",
-        "format-disconnected": "",
-        "tooltip-format-disconnected": "Error",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-        "tooltip-format-ethernet": "{ifname} 🖧 ",
-        "on-click": "kitty nmtui"
-    },
+    // "network": {
+    //     "format-wifi": "",
+    //     "format-ethernet":"",
+    //     "format-disconnected": "",
+    //     "tooltip-format-disconnected": "Error",
+    //     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    //     "tooltip-format-ethernet": "{ifname} 🖧 ",
+    //     "on-click":"",
+    //     "on-click-right": "kitty nmtui"
+    // },
     "bluetooth": {
         "format-on": "󰂯",
         "format-off": "BT-off",
@@ -82,6 +90,7 @@
         "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
         "on-click-right": "blueman-manager"
+
     },
     "battery": {
         "interval":1,
@@ -156,7 +165,8 @@
     },
     "tray": {
         "icon-size": 14,
-        "spacing": 10
-    },
+        "spacing": 10,
+        // "on-click-right": "kitty -e nmtui", -- DOENST WORK IDK WHY
+    }
 }
 

@@ -103,6 +103,7 @@ alias brightness='sudo tee /sys/class/backlight/intel_backlight/brightness <<<' 
 alias userkey='screenkey'
 alias touchpad='hyprctl keyword "device[elan06fa:00-04f3:31be-touchpad]:enabled"'
 alias treenode='tree -I node_modules/'
+alias update='~/scripts/system_maintainance.sh'
 
 #---- My special Shortcuts -----#
 alias i3rwallpaper="~/scripts/i3_random_wallpapers.sh" #Wallpaper randomizer script
