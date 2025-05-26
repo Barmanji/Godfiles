@@ -10,22 +10,33 @@
     "reload_style_on_change": true,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/notification","clock","custom/pacman"],
-    "modules-right": ["pulseaudio","custom/cava_mviz","group/expand","tray","bluetooth","battery"],
+    "modules-right": ["tray","pulseaudio","custom/cava_mviz","group/expand","bluetooth","battery"],
 
-  "hyprland/workspaces": {
-    "active-only": false,
-    "all-outputs": false,
-    "disable-scroll": false,
-    "on-scroll-up": "hyprctl dispatch workspace e-1",
-    "on-scroll-down": "hyprctl dispatch workspace e+1",
-    "format": "{icon}",
-    "tooltip": false,
-    "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": "",
-      "sort-by-number": true
-      }
+    // "hyprland/workspaces": {
+    //     "format": "{icon}",
+    //     "format-icons": {
+    //         "active": "",
+    //         "default": "",
+    //         "empty": ""
+    //     },
+    //     "persistent-workspaces": {
+    //         "*": [ 1,2,3,4,5 ]
+    //     }
+    // },
+    "hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": false,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1",
+        "format": "{icon}",
+        "tooltip": false,
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": "",
+            "sort-by-number": true
+        }
     },
     "custom/power": {
         "format": "⏻",
@@ -48,7 +59,7 @@
         "tooltip-format": "<tt>{calendar}</tt>",
         "calendar": {
             "format": {
-                "months": "<span color='#000000'><b>{}</b></span>",
+                "months": "<span color='#EFF1F5'><b>{}</b></span>",
                 "weekdays": "<span color='#000000'><b>{}</b></span>",
                 "today": "<span color='#000000'><b>{}</b></span>"
             }
@@ -62,13 +73,31 @@
         "format": "{icon}{volume}%",
         "format-muted": "",
         "format-icons": {
-            "default": [" "]
+            "default": ["|  "]
         },
         "on-click":"pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+ ",
         "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "on-click-right": "pavucontrol"
     },
+        "custom/expand": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/endpoint":{
+        "format": "|",
+        "tooltip": false
+    },
+    "group/expand": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 600,
+            "transition-to-left": true,
+            "click-to-reveal": true
+        },
+        "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"]
+    },
+
     // "network": {
     //     "format-wifi": "",
     //     "format-ethernet":"",
@@ -112,32 +141,15 @@
             "󰁹"
         ]
     },
-    "custom/pacman": {
-        "format": "󰅢 {}",
-        "interval": 600,
-        "exec": "checkupdates | wc -l",
-        "exec-if": "exit 0",
-        "on-click": "kitty sh -c 'yay; sudo pacman -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
-        "signal": 8,
-        "tooltip": false
-    },
-    "custom/expand": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/endpoint":{
-        "format": "|",
-        "tooltip": false
-    },
-    "group/expand": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 600,
-            "transition-to-left": true,
-            "click-to-reveal": true
-        },
-        "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"]
-    },
+    // "custom/pacman": {
+    //     "format": "󰅢 {}",
+    //     "interval": 600,
+    //     "exec": "checkupdates | wc -l",
+    //     "exec-if": "exit 0",
+    //     "on-click": "kitty sh -c 'yay; sudo pacman -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+    //     "signal": 8,
+    //     "tooltip": false
+    // },
     "custom/colorpicker": {
         "format": "{}",
         "return-type": "json",
@@ -166,6 +178,7 @@
     "tray": {
         "icon-size": 14,
         "spacing": 10,
+
         // "on-click-right": "kitty -e nmtui", -- DOENST WORK IDK WHY
     }
 }
