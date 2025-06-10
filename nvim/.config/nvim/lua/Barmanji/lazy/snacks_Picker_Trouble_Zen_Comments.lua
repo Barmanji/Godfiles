@@ -30,19 +30,19 @@ return {
                     "webm",
                     "pdf",
                 },
-                force = true,
+                force = false,
                 doc = {
                     -- enable image viewer for documents
                     -- a treesitter parser must be available for the enabled languages.
                     -- supported language injections: markdown, html
-                    enabled = true,
+                    enabled = false,
                     -- render the image inline in the buffer
                     -- if your env doesn't support unicode placeholders, this will be disabled
                     -- takes precedence over `opts.float` on supported terminals
-                    inline = true,
+                    inline = false,
                     -- render the image in a floating window
                     -- only used if `opts.inline` is disabled
-                    float = true,
+                    float = false,
                     max_width = 80,
                     max_height = 40,
                     -- Set to `true`, to conceal the image text when rendering inline.
