@@ -141,7 +141,8 @@
             "󰂀",
             "󰂂",
             "󰁹"
-        ]
+        ],
+        "on-click-right": "$HOME/scripts/nightLight_brightness.sh"
     },
     // "custom/pacman": {
     //     "format": "󰅢 {}",
