@@ -97,7 +97,7 @@ return {
                         },
                     },
                 },
-                enabled = true,
+                enabled = false,
                 formatters = {
                     file = {
                         filename_first = false,
@@ -203,7 +203,7 @@ return {
             { "<leader>gd",       function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" }, -- already in init.lua
             { "<leader>gr",       function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
             { "<leader>th",       function() require("snacks").picker.colorschemes({ layout = "ivy" }) end,          desc = "Pick Color Schemes" },
-            { "<leader>vh",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
+            { "<leader>ph",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
         }
     },
     -- NOTE: Todo comments w/ snacks
