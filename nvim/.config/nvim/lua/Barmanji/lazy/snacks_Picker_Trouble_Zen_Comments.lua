@@ -175,17 +175,18 @@ return {
         -- NOTE: Keymaps
         keys = {
             -- Snacks Picker
-            { "<leader>pf",       function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
-            { "<leader>pn",       function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Nvim Config File" },
-            { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
-            { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
+            -- { "<leader>pf",       function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
+            -- { "<leader>pn",       function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Nvim Config File" },
+            -- { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
+            -- { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
             { "<leader>pk",       function() require("snacks").picker.keymaps() end,                                 desc = "Search Keymaps (Snacks Picker)" },
             { "<leader>ps",       function() require("snacks").picker.smart() end,                                   desc = "Smart Find Files" },
-            { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
-            { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
+            -- { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
+            -- { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
+            -- { "<leader>ph",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
             { "<leader>pq",       function() require("snacks").picker.qflist() end,                                  desc = "Quickfix List" },
-            { "<leader>pd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
-            { "<leader>pD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
+            -- { "<leader>pd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
+            -- { "<leader>pD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
 
             -- Git Stuff
             { "<leader>Gl",       function() require("snacks").lazygit.log() end,                                    desc = "Lazygit Logs" },
@@ -203,7 +204,6 @@ return {
             { "<leader>gd",       function() require("snacks").picker.lsp_definitions() end,                         desc = "Goto Definition" }, -- already in init.lua
             { "<leader>gr",       function() require("snacks").picker.lsp_references() end,                          nowait = true,                             desc = "References" },
             { "<leader>th",       function() require("snacks").picker.colorschemes({ layout = "ivy" }) end,          desc = "Pick Color Schemes" },
-            { "<leader>ph",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
         }
     },
     -- NOTE: Todo comments w/ snacks
