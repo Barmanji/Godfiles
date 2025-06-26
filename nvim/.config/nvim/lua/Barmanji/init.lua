@@ -1,6 +1,8 @@
 require("Barmanji.set")
 require("Barmanji.remap")
 require("Barmanji.lazy_init")
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#589ED7", bg = "none" }) -- Telescope themeing
+
 -- DO.not
 -- DO NOT INCLUDE THIS
 

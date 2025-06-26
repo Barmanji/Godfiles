@@ -1,3 +1,4 @@
+
 return {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
@@ -30,6 +31,7 @@ return {
                 },
             },
         })
+
 
         -- Load Telescope extensions
         pcall(require("telescope").load_extension, "fzf")
