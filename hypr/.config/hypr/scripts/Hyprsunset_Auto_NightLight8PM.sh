@@ -10,7 +10,7 @@ export XDG_RUNTIME_DIR="/run/user/1000"
 export HYPRLAND_INSTANCE_SIGNATURE="$hyprlandSession"
 
 if [[ "$currTime" -ge 4 ]] && [[ "$currTime" -lt 20 ]]; then
-    # hyprctl hyprsunset gamma 100
+    hyprctl hyprsunset gamma 100
     hyprctl hyprsunset temperature 6000
 else
     hyprctl hyprsunset temperature 4500
