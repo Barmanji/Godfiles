@@ -75,3 +75,8 @@ stow -t ~ nvim
 stow -t ~ zsh
 ```
 
+##### Misc
+- Flameshot-git is better than hyprshot
+- fstrim is important for SSD hygeine, have discard enabled while installing
+- SWAP is must, atleast have some I prefer equal to or half of RAM for >64GB Ram, else no need.
+- Zen-Browser + Tmux + Nvim + Cursor + Yt_Music is my current Go to VIBE.
