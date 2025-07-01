@@ -103,16 +103,15 @@ alias brightness='sudo tee /sys/class/backlight/intel_backlight/brightness <<<' 
 alias userkey='screenkey'
 alias touchpad='hyprctl keyword "device[elan06fa:00-04f3:31be-touchpad]:enabled"'
 alias treenode='tree -I node_modules/'
-alias update='~/scripts/system_maintainance.sh'
+alias update='~/scripts/system_update_and_maintainance.sh'
 
 #---- My special Shortcuts -----#
-alias i3rwallpaper="~/scripts/i3_random_wallpapers.sh" #Wallpaper randomizer script
 alias rwallpaper="~/.config/swww/swww.sh"
 alias menubar='gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar' #Set True or False for menubar/Topbar
-alias gapsDisable='~/scripts/gaps_rounding_disable.sh'
-alias gapsEnable='~/scripts/gaps_rounding_enable.sh'
+alias gapsDisable='~/scripts/gaps_and_rounding_switch.sh'
+alias gapsEnable='~/scripts/gaps_and_rounding_switch.sh'
 alias currentWallpaper='~/scripts/current_wallpaper.sh'
-alias deleteCurrentWallpaper='~/scripts/deleteCurrentWallpaper.sh'
+alias deleteCurrentWallpaper='~/scripts/delete_current_wallpaper.sh'
 alias copy='wl-copy'
 alias clock='tty-clock -t -C'
 alias pipe='pipes.sh -t'
@@ -135,8 +134,8 @@ alias pi='pnpm install'
 alias nd='npm run dev'
 alias ni='npm install'
 alias gs='git status'
-alias ts='~/scripts/tmux-sessionizer'
-alias tss='~/scripts/tmux-sessionizer "$(dirname "$(realpath "$1")")"'
+alias ts='~/scripts/tmux_sessionizer'
+alias tss='~/scripts/tmux_ssessionizer "$(dirname "$(realpath "$1")")"'
 alias fman='print -l ${(ok)commands} | fzf | xargs man'
 
 
@@ -174,6 +173,7 @@ export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source /usr/share/nvm/init-nvm.sh
 
 
 # pnpm
@@ -183,3 +183,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#

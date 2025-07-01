@@ -142,7 +142,7 @@
             "󰂂",
             "󰁹"
         ],
-        "on-click-right": "$HOME/scripts/nightLight_brightness.sh"
+        "on-click-right": "$HOME/scripts/nightlight_brightness.sh"
     },
     // "custom/pacman": {
     //     "format": "󰅢 {}",
