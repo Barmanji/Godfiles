@@ -30,7 +30,7 @@ end)
 vim.keymap.set('i', '<C-c>', '<Esc>')
 
 -- vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww ~/scripts/tmux-sessionizer<CR>') -- TODO Gotta work on this
+vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww ~/scripts/tmux_sessionizer<CR>') -- TODO Gotta work on this
 
 --these 4 below cmds are fucking my normal window tab manuvering so i commented em!
 --Quickfix my ass
