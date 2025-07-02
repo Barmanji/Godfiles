@@ -56,6 +56,9 @@ return {
             },
             -- HACK: read picker docs @ https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
             picker = {
+                main = {
+                    file = false
+                },
                 sources = {
                     explorer = {
                         layout = { layout = { position = "right" } },
@@ -66,7 +69,7 @@ return {
                                     ["l"] = "confirm",
                                     ["h"] = "explorer_close", -- close directory
                                     ["-"] = "explorer_close", -- close directory
-                                    ["a"] = "explorer_add", -- FOLDER ADD
+                                    ["a"] = "explorer_add",   -- FOLDER ADD
                                     ["o"] = "explorer_add",
                                     ["d"] = "explorer_del",
                                     ["r"] = "explorer_rename",
@@ -175,18 +178,18 @@ return {
         -- NOTE: Keymaps
         keys = {
             -- Snacks Picker
-            -- { "<leader>pf",       function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
-            -- { "<leader>pn",       function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Nvim Config File" },
-            -- { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
-            -- { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
+            { "<leader>pf",       function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
+            { "<leader>pn",       function() require("snacks").picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Nvim Config File" },
+            { "<leader>pg",       function() require("snacks").picker.grep() end,                                    desc = "Grep word" },
+            { "<leader>pws",      function() require("snacks").picker.grep_word() end,                               desc = "Search Visual selection or Word",  mode = { "n", "x" } },
             { "<leader>pk",       function() require("snacks").picker.keymaps() end,                                 desc = "Search Keymaps (Snacks Picker)" },
             { "<leader>ps",       function() require("snacks").picker.smart() end,                                   desc = "Smart Find Files" },
-            -- { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
-            -- { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
-            -- { "<leader>ph",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
+            { "<leader><leader>", function() require("snacks").picker.buffers() end,                                 desc = "Find existing buffers" },
+            { "<leader>pr",       function() require("snacks").picker.recent() end,                                  desc = "Recent" },
+            { "<leader>ph",       function() require("snacks").picker.help() end,                                    desc = "Help Pages" },
             { "<leader>pq",       function() require("snacks").picker.qflist() end,                                  desc = "Quickfix List" },
-            -- { "<leader>pd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
-            -- { "<leader>pD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
+            { "<leader>pd",       function() require("snacks").picker.diagnostics() end,                             desc = "Diagnostics" },
+            { "<leader>pD",       function() require("snacks").picker.diagnostics_buffer() end,                      desc = "Buffer Diagnostics" },
 
             -- Git Stuff
             { "<leader>Gl",       function() require("snacks").lazygit.log() end,                                    desc = "Lazygit Logs" },
