@@ -99,7 +99,6 @@ alias perc='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percen
 alias %age='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage' #Battery %age Shortcuts
 alias percentage='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage' #Battery %age Shortcuts
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage' #Battery %age Shortcuts
-alias brightness='sudo tee /sys/class/backlight/intel_backlight/brightness <<<' #Brightness control
 alias userkey='screenkey'
 alias touchpad='hyprctl keyword "device[elan06fa:00-04f3:31be-touchpad]:enabled"'
 alias treenode='tree -I node_modules/'
