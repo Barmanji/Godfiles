@@ -18,7 +18,6 @@ return {
       },
       keymaps = {
         ['<C-h>'] = false,
-        -- ["<M-h>"] = "actions.select_split",
         ['<C-c>'] = false, -- prevent from closing Oil as <C-c> is esc key
         ['<C-s>'] = { 'actions.select', opts = { vertical = true } },
         ['gg'] = { 'actions.change_sort', mode = 'n' },
