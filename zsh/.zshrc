@@ -77,6 +77,7 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 ######################################## ALIAS ##########################################
+
 #---- Basic Utilities -----#
 alias ls='ls --color'
 alias ll='ls -la'
@@ -136,6 +137,7 @@ alias gs='git status'
 alias ts='~/scripts/tmux_sessionizer'
 alias tss='~/scripts/tmux_ssessionizer "$(dirname "$(realpath "$1")")"'
 alias fman='print -l ${(ok)commands} | fzf | xargs man'
+alias top='btop'
 
 
 autoload -Uz edit-command-line
@@ -173,7 +175,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source /usr/share/nvm/init-nvm.sh
-
 
 # pnpm
 export PNPM_HOME="/home/barmanji/.local/share/pnpm"
