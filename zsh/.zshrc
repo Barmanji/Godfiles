@@ -138,6 +138,7 @@ alias ts='~/scripts/tmux_sessionizer'
 alias tss='~/scripts/tmux_ssessionizer "$(dirname "$(realpath "$1")")"'
 alias fman='print -l ${(ok)commands} | fzf | xargs man'
 alias top='btop'
+alias tsync="tmux_env_sync"
 
 
 autoload -Uz edit-command-line
@@ -160,6 +161,23 @@ function gitty() {
     echo "Remote origin added for repository: $1"
   fi
 }
+
+tmux_env_sync() {
+  if [ -n "$TMUX" ]; then
+    tmux show-environment -g | grep -v '^-'
+  else
+    echo 'Not inside tmux.'
+    return 1
+  fi | while IFS= read -r line; do
+    # Extract variable name and value
+    var_name="${line%%=*}"
+    var_value="${line#*=}"
+    # Export with safely quoted value
+    export "$var_name=$var_value"
+  done
+  echo '[tmux] Environment reloaded from tmux server!'
+}
+
 # function gilly() {
 #   if [[ -z "$1" ]]; then
 #     echo "Please provide a repository name."
@@ -184,3 +202,11 @@ case ":$PATH:" in
 esac
 # pnpm end
 #
+### CONDA ###
+[ -f /opt/anaconda/etc/profile.d/conda.sh ] && source /opt/anaconda/etc/profile.d/conda.sh
+export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/barmanji/.lmstudio/bin"
+# End of LM Studio CLI section
+
