@@ -234,7 +234,7 @@ return {
         end,
         keys = {
             { "<leader>pt", function() require("snacks").picker.todo_comments() end,                                          desc = "Todo" },
-            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end, desc = "Todo/Fix/Fixme" },
+            { "<leader>pT", function() require("snacks").picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME","TEST" } }) end, desc = "Todo|Fix|Test" },
             { "]t",         function() require("todo-comments").jump_next() end,                                              desc = "Next todo comment" },
             { "[t",         function() require("todo-comments").jump_prev() end,                                              desc = "Previous todo comment" },
         },
