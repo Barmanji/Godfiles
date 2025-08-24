@@ -15,27 +15,46 @@ if [ ! -d "$ZINIT_HOME" ]; then
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 source "${ZINIT_HOME}/zinit.zsh"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# Powerlevel10k prompt with turbo loading
+zinit ice depth=1;
+zinit light romkatv/powerlevel10k
+# FIX: FOR FAST STARTUP
+# # Add in Powerlevel10k
+# zinit ice depth=1;
+# zinit light romkatv/powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export FZF_TMUX=1
-
-zinit light zsh-users/zsh-syntax-highlighting #Highliter
-
-# Lazy load plugins without messages
+# WARN: NEW
+zinit ice wait lucid atinit'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-completions
+
+# Syntax highlighting loaded AFTER completions to avoid errors
+zinit ice wait lucid
+zinit light zsh-users/zsh-syntax-highlighting
+#
+# Autosuggestions lazy load with trigger on plugin load
+zinit ice wait lucid atload'!_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
+# WARN: END---
+
+# FIX: COMMENTED FOR PERF
+# zinit light zsh-users/zsh-syntax-highlighting #Highliter
+# Lazy load plugins without messages
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+
+# fzf-tab lazy load turbo mode
+zinit ice wait lucid
 zinit light Aloxaf/fzf-tab
 
-# OMZ plugins with silent loading
-zinit ice wait'0' silent
+# OMZ plugins loaded silently and after prompt
+zinit ice wait lucid silent
 zinit snippet OMZP::git
-zinit ice wait'0' silent
+
+zinit ice wait lucid silent
 zinit snippet OMZP::sudo
 
 # Load completions
@@ -209,4 +228,6 @@ export CRYPTOGRAPHY_OPENSSL_NO_LEGACY=1
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/home/barmanji/.lmstudio/bin"
 # End of LM Studio CLI section
+export CPATH=$(g++ -v -E -x c++ /dev/null 2>&1 | sed -n '/^#include <...> search starts here:/,$p' | tail -n +2 | sed -e '/^End of search list./q' -e 's/^ //')
+export LIBRARY_PATH=$(g++ -print-search-dirs | grep libraries | cut -d '=' -f2)
 
