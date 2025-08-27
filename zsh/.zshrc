@@ -19,15 +19,11 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Powerlevel10k prompt with turbo loading
 zinit ice depth=1;
 zinit light romkatv/powerlevel10k
-# FIX: FOR FAST STARTUP
-# # Add in Powerlevel10k
-# zinit ice depth=1;
-# zinit light romkatv/powerlevel10k
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 export FZF_TMUX=1
-# WARN: NEW
+
 zinit ice wait lucid atinit'zicompinit; zicdreplay'
 zinit light zsh-users/zsh-completions
 
@@ -38,13 +34,6 @@ zinit light zsh-users/zsh-syntax-highlighting
 # Autosuggestions lazy load with trigger on plugin load
 zinit ice wait lucid atload'!_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
-# WARN: END---
-
-# FIX: COMMENTED FOR PERF
-# zinit light zsh-users/zsh-syntax-highlighting #Highliter
-# Lazy load plugins without messages
-# zinit light zsh-users/zsh-completions
-# zinit light zsh-users/zsh-autosuggestions
 
 # fzf-tab lazy load turbo mode
 zinit ice wait lucid
@@ -84,7 +73,7 @@ eval "$(zoxide init --cmd cd zsh)"
 # History
 HISTSIZE=10000
 SAVEHIST=10000
-HISTFILE=~/.zsh_history
+HISTFILE=$HOME/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase
 setopt appendhistory
@@ -122,24 +111,24 @@ alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep per
 alias userkey='screenkey'
 alias touchpad='hyprctl keyword "device[elan06fa:00-04f3:31be-touchpad]:enabled"'
 alias treenode='tree -I node_modules/'
-alias update='~/scripts/system_update_and_maintainance.sh'
+alias update='$HOME/scripts/system_update_and_maintainance.sh'
 
 #---- My special Shortcuts -----#
-alias rwallpaper="~/.config/swww/swww.sh"
+alias rwallpaper="$HOME/.config/swww/swww.sh"
 alias menubar='gsettings set org.gnome.Terminal.Legacy.Settings default-show-menubar' #Set True or False for menubar/Topbar
-alias gapsDisable='~/scripts/gaps_and_rounding_switch.sh'
-alias gapsEnable='~/scripts/gaps_and_rounding_switch.sh'
-alias currentWallpaper='~/scripts/current_wallpaper.sh'
-alias deleteCurrentWallpaper='~/scripts/delete_current_wallpaper.sh'
+alias gapsDisable='$HOME/scripts/gaps_and_rounding_switch.sh'
+alias gapsEnable='$HOME/scripts/gaps_and_rounding_switch.sh'
+alias currentWallpaper='$HOME/scripts/current_wallpaper.sh'
+alias deleteCurrentWallpaper='$HOME/scripts/delete_current_wallpaper.sh'
 alias copy='wl-copy'
 alias clock='tty-clock -t -C'
 alias pipe='pipes.sh -t'
 alias pipes='pipes.sh -t'
-alias so='source ~/.zshrc'
+alias so='source $HOME/.zshrc'
 
 #---- Vim related ----#
 alias vimbegood='sudo docker run -it --rm brandoncc/vim-be-good:latest'
-alias vp='nvim ~/Documents/projects/'
+alias vp='nvim $HOME/Documents/projects/'
 alias vim='nvim' #Vim will open Nvim-
 alias v='nvim'
 alias vi='nvim .'
@@ -153,16 +142,20 @@ alias pi='pnpm install'
 alias nd='npm run dev'
 alias ni='npm install'
 alias gs='git status'
-alias ts='~/scripts/tmux_sessionizer'
-alias tss='~/scripts/tmux_ssessionizer "$(dirname "$(realpath "$1")")"'
+alias ts='$HOME/scripts/tmux_sessionizer'
+alias tss='$HOME/scripts/tmux_sessionizer "$(pwd)"'
 alias fman='print -l ${(ok)commands} | fzf | xargs man'
 alias top='btop'
-alias tsync="tmux_env_sync"
+alias tsync="tmux_env_sync && source $HOME/.zshrc"
+alias hi="echo bye"
 
 
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^V' edit-command-line
+
+# TMUX same behaviour of vim
+bindkey -s '^F' '$HOME/scripts/tmux_sessionizer\n'
 
 ############################## FUNCTIONAL SHORTCUTS ##################################
 #Git SSH copy and see
@@ -230,4 +223,29 @@ export PATH="$PATH:/home/barmanji/.lmstudio/bin"
 # End of LM Studio CLI section
 export CPATH=$(g++ -v -E -x c++ /dev/null 2>&1 | sed -n '/^#include <...> search starts here:/,$p' | tail -n +2 | sed -e '/^End of search list./q' -e 's/^ //')
 export LIBRARY_PATH=$(g++ -print-search-dirs | grep libraries | cut -d '=' -f2)
+
+# NOTE: OLD CONF
+# Add in Powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
+#
+# # To customize prompt, run `p10k configure` or edit $HOME/.p10k.zsh.
+# [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+# export FZF_TMUX=1
+#
+# zinit light zsh-users/zsh-syntax-highlighting #Highliter
+#
+# # Lazy load plugins without messages
+# zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light Aloxaf/fzf-tab
+#
+# # OMZ plugins with silent loading
+# zinit ice wait'0' silent
+# zinit snippet OMZP::git
+# zinit ice wait'0' silent
+# zinit snippet OMZP::sudo
+#
+# # Load completions
+# autoload -Uz compinit && compinit -C
+# zinit cdreplay -q #In docs it says its necessary
 
