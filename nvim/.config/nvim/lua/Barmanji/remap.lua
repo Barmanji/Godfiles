@@ -74,3 +74,6 @@ vim.keymap.set('n', '<leader>cd', function()
   vim.cmd 'Copilot disable'
   print 'Copilot disabled'
 end, { desc = 'Disabled Copilot' })
+
+
+

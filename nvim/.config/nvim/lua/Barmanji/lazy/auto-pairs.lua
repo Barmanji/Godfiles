@@ -1,3 +1,6 @@
+        -- foldopen = '',   -- down arrow for open folds
+        -- foldclose = '',  -- right arrow for closed folds
+
 return {
     "windwp/nvim-autopairs",
     event = { "InsertEnter" },

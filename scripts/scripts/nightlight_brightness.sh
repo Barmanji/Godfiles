@@ -8,7 +8,7 @@ if [[ "$currTime" -ge 4 ]] && [[ "$currTime" -lt 20 ]]; then
     hyprctl hyprsunset temperature 6000
     notify-send -e -u critical -i "$notif" "NightLight Off"
 else
-    hyprctl hyprsunset temperature 4500
+    hyprctl hyprsunset temperature 4000
     hyprctl hyprsunset gamma 90
     notify-send -e -u critical -i "$notif" "NightLight On"
 fi
