@@ -7,7 +7,7 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     init = function()
       -- Set foldcolumn to show fold indicators
-      vim.o.foldcolumn = '1'
+      vim.o.foldcolumn = '0'
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
@@ -21,7 +21,7 @@ return {
       }
 
       -- Set foldtext to empty to remove numbers in foldcolumn
-      vim.opt.foldtext = ' '
+      vim.opt.foldtext = ''
 
       -- fold open/close shortcuts (safe wrappers)
       vim.keymap.set('n', 'zR', function()

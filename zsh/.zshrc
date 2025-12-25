@@ -89,10 +89,7 @@ setopt hist_find_no_dups
 #---- Basic Utilities -----#
 alias ls='ls --color'
 alias ll='ls -la'
-alias lf='yazi'
 alias c='clear'
-alias d='pwd'
-alias file='yazi'
 # alias xcopy='xclip -selection clipboard'
 
 #----- Directory navigation shortcuts ------#

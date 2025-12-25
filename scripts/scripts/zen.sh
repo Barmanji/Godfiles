@@ -10,9 +10,9 @@ STATE=$(pgrep -x waybar >/dev/null && echo "Waybar is running" || echo "Waybar i
 if [ "${STATE}" == "Waybar is running" ]; then
     hyprctl keyword general:gaps_out $default_gaps_out_everywhere
     pkill waybar
-    notify-send -e -u critical -i "$notif" "Zen Mode Enabled"
+    notify-send -e -t 1000 -i "$notif" "Zen Mode Enabled"
 else
     waybar & disown
     hyprctl keyword general:gaps_out $default_gaps_out_with_waybar
-    notify-send -e -u critical -i "$notif" "Zen Mode Disabled"
+    notify-send -e -t 1000 -i "$notif" "Zen Mode Disabled"
 fi

@@ -46,6 +46,9 @@ vim.keymap.set('n', '<leader>F', vim.lsp.buf.format)
 vim.keymap.set('n', '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>')
 vim.keymap.set('n', '<leader>ms', '<cmd>CellularAutomaton scramble<CR>')
 
+-- This tells Neovim to treat Tab and Ctrl-I as different keys if the terminal supports it
+vim.keymap.set('n', '<leader><Tab>', 'za', { desc = 'Toggle fold' })
+
 vim.keymap.set('n', '<leader>x', '<cmd>close<CR>', { desc = 'Close current split' })
 
 -- Copy filepath to the clipboard

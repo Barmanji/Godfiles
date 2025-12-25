@@ -14,7 +14,7 @@ if [ "$charging_state" = "charging" ]; then
     elif [ "$battery_percentage" -ge 25 ]; then
         icon=""  # Low battery charging icon
     else
-        icon=""  # Critical battery charging icon
+        icon=""  # Critical battery charging icon
     fi
 else
     if [ "$battery_percentage" -ge 75 ]; then

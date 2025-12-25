@@ -1,28 +1,23 @@
 {
-    // OLD -
-    // "modules-left": ["custom/notification","clock","custom/pacman","tray","network"],
-    // "custom/cava_mviz": {
-    //     "exec": "$HOME/.config/waybar/scripts/waybarCava.sh",
-    //     "format": "{}"
-    // },
     "layer": "top",
     "position": "top",
     "reload_style_on_change": true,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["custom/notification","clock","custom/pacman"],
-    "modules-right": ["tray","pulseaudio","custom/cava_mviz","group/expand","bluetooth","battery"],
+    "modules-right": ["tray","pulseaudio","custom/cava_mviz","group/expand","bluetooth","battery",],
 
-    // "hyprland/workspaces": {
-    //     "format": "{icon}",
-    //     "format-icons": {
-    //         "active": "",
-    //         "default": "",
-    //         "empty": ""
-    //     },
-    //     "persistent-workspaces": {
-    //         "*": [ 1,2,3,4,5 ]
-    //     }
-    // },
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+
     "hyprland/workspaces": {
         "active-only": false,
         "all-outputs": false,
@@ -97,7 +92,7 @@
             "transition-to-left": true,
             "click-to-reveal": true
         },
-        "modules": ["custom/expand", "custom/colorpicker","cpu","memory","temperature","custom/endpoint"]
+        "modules": ["custom/expand","power-profiles-daemon", "custom/colorpicker","cpu","memory","temperature","custom/endpoint", ]
     },
 
     // "network": {
@@ -176,7 +171,7 @@
         "thermal-zone":1,
         "critical-threshold": 80,
         "format": "{icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [""]
     },
     "tray": {
         "icon-size": 14,

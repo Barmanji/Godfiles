@@ -2,5 +2,5 @@
 
 sleep 3
 
-postman &
+hyprctl dispatch exec "[workspace 1 silent] postman"
 
