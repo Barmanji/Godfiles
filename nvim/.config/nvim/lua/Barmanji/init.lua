@@ -1,7 +1,7 @@
 require("Barmanji.set")
 require("Barmanji.remap")
 require("Barmanji.lazy_init")
-vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#589ED7", bg = "none" }) -- Telescope themeing
+-- vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#589ED7", bg = "none" }) -- Telescope themeing
 
 -- DO.not
 -- DO NOT INCLUDE THIS
@@ -80,21 +80,20 @@ autocmd('LspAttach', {
         vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
         vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-
+        -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+        -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
         -- For defination borders --
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "rounded", -- Options: "single", "double", "rounded", "solid", "shadow"
-        })
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "rounded",
-        })
-        vim.lsp.handlers["textDocument/definition"] = vim.lsp.with(vim.lsp.handlers.definition, {
-            border = "rounded",
-        })
-        vim.lsp.handlers["textDocument/declaration"] = vim.lsp.with(vim.lsp.handlers.declaration, {
-            border = "rounded",
-        })
+        -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        --     border = "rounded", -- Options: "single", "double", "rounded", "solid", "shadow"
+        -- })
+        -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        --     border = "rounded",
+        -- })
+        -- vim.lsp.handlers["textDocument/definition"] = vim.lsp.with(vim.lsp.handlers.definition, {
+        --     border = "rounded",
+        -- })
+        -- vim.lsp.handlers["textDocument/declaration"] = vim.lsp.with(vim.lsp.handlers.declaration, {
+        --     border = "rounded",
+        -- })
     end
 })

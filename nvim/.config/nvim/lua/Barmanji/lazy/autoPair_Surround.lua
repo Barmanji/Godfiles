@@ -24,8 +24,9 @@ return {
       -- make autopairs and completion work together
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
-    -- NOTE: js,ts,jsx,tsx Auto Close Tags
   },
+
+  -- NOTE: js,ts,jsx,tsx Auto Close Tags
   {
     'windwp/nvim-ts-autotag',
     ft = { 'html', 'xml', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },

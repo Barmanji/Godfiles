@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-sleep 3
+hyprctl dispatch exec postman && sleep 2 && hyprctl dispatch movetoworkspacesilent 1,class:Postman
 
-hyprctl dispatch exec "[workspace 1 silent] postman"
 

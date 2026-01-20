@@ -6,69 +6,75 @@ return {
     dependencies = { 'kevinhwang91/promise-async' },
     event = { 'BufReadPre', 'BufNewFile' },
     init = function()
-      -- Set foldcolumn to show fold indicators
+      -- SETTINGS
       vim.o.foldcolumn = '0'
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
 
-      -- Configure fillchars to hide unwanted characters and show only arrows
-      vim.opt.fillchars = {
-        foldopen = '',   -- down arrow for open folds
-        foldclose = '',  -- right arrow for closed folds
-        foldsep = ' ',    -- remove the vertical separator
-        fold = ' ',       -- remove the fold fill character
-      }
+      -- PERSISTENCE: Save folds on close, load on open
+      vim.opt.viewoptions:remove('cursor') -- don't save cursor position in the view
+      vim.opt.viewoptions:remove('options') -- don't save local options
 
-      -- Set foldtext to empty to remove numbers in foldcolumn
+      vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
+        pattern = '*.*',
+        callback = function() vim.cmd('silent! mkview') end,
+      })
+      vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+        pattern = '*.*',
+        callback = function() vim.cmd('silent! loadview') end,
+      })
+
+      -- COLORS: Define your custom colors here
+      vim.api.nvim_set_hl(0, 'UfoFoldArrow', { fg = '#7aa2f7', bold = true }) -- colored Arrow
+      vim.api.nvim_set_hl(0, 'UfoFoldCount', { fg = '#7aa2f7', bold = true }) -- colored Number
+
+      vim.opt.fillchars = {
+        foldopen = '',
+        foldclose = '',
+        foldsep = ' ',
+        fold = ' ',
+      }
       vim.opt.foldtext = ''
 
-      -- fold open/close shortcuts (safe wrappers)
+      -- KEYMAPS
       vim.keymap.set('n', 'zR', function()
         local ok, ufo = pcall(require, 'ufo')
-        if ok and ufo.openAllFolds then
-          ufo.openAllFolds()
-        end
+        if ok then ufo.openAllFolds() end
       end)
 
       vim.keymap.set('n', 'zM', function()
         local ok, ufo = pcall(require, 'ufo')
-        if ok and ufo.closeAllFolds then
-          ufo.closeAllFolds()
-        end
+        if ok then ufo.closeAllFolds() end
       end)
 
-      -- custom peek mapping
+      -- Fold React/Next.js Functions only
+      vim.keymap.set('n', '<leader>zf', function()
+        local ok, ufo = pcall(require, 'ufo')
+        if ok then ufo.closeFoldsWith(2) end
+      end, { desc = 'Fold functions but keep internals open' })
+
+      -- Peek mapping
       vim.keymap.set('n', '<leader>K', function()
         local ok, ufo = pcall(require, 'ufo')
         if ok and ufo.peekFoldedLinesUnderCursor then
-          local winid = ufo.peekFoldedLinesUnderCursor()
-          if winid then
-            return
-          end
+          if ufo.peekFoldedLinesUnderCursor() then return end
         end
-        -- fallback: try CoC, then LSP hover
-        if vim.fn.exists ':CocActionAsync' == 2 then
-          pcall(vim.fn.CocActionAsync, 'definitionHover')
-        end
-        if vim.lsp and vim.lsp.buf and vim.lsp.buf.hover then
-          pcall(vim.lsp.buf.hover)
-        end
-      end, { desc = 'UFO peek folded (fallback to hover)' })
+        if vim.lsp and vim.lsp.buf then pcall(vim.lsp.buf.hover) end
+      end)
     end,
 
     config = function()
-      local ok, ufo = pcall(require, 'ufo')
-      if not ok or type(ufo.setup) ~= 'function' then
-        return
-      end
+      local ufo = require('ufo')
 
-      -- Custom fold text handler to show line count with icon
+      -- HANDLER: Colored Arrow and Number
       local handler = function(virtText, lnum, endLnum, width, truncate)
         local newVirtText = {}
-        local suffix = (' 󰁂 %d '):format(endLnum - lnum)
-        local sufWidth = vim.fn.strdisplaywidth(suffix)
-        local targetWidth = width - sufWidth
+        local arrow = ' 󰁂'
+        local lnCount = (' %d '):format(endLnum - lnum)
+
+        local suffixWidth = vim.fn.strdisplaywidth(arrow .. lnCount)
+        local targetWidth = width - suffixWidth
         local curWidth = 0
 
         for _, chunk in ipairs(virtText) do
@@ -78,28 +84,25 @@ return {
             table.insert(newVirtText, chunk)
           else
             chunkText = truncate(chunkText, targetWidth - curWidth)
-            local hlGroup = chunk[2]
-            table.insert(newVirtText, { chunkText, hlGroup })
+            table.insert(newVirtText, { chunkText, chunk[2] })
             chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            -- str width returned from truncate() may less than 2nd argument, need padding
             if curWidth + chunkWidth < targetWidth then
-              suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+              lnCount = lnCount .. (' '):rep(targetWidth - curWidth - chunkWidth)
             end
             break
           end
           curWidth = curWidth + chunkWidth
         end
 
-        table.insert(newVirtText, { suffix, 'MoreMsg' })
+        table.insert(newVirtText, { arrow, 'UfoFoldArrow' })
+        table.insert(newVirtText, { lnCount, 'UfoFoldCount' })
         return newVirtText
       end
 
-      ufo.setup {
-        provider_selector = function(_, _, _)
-          return { 'treesitter', 'indent' }
-        end,
+      ufo.setup({
+        provider_selector = function() return { 'treesitter', 'indent' } end,
         fold_virt_text_handler = handler,
-      }
+      })
     end,
   },
 }

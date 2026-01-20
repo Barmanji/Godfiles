@@ -1,5 +1,4 @@
 return {
-    -- HACK: docs @ https://github.com/folke/snacks.nvim/blob/main/docs
     {
         "folke/snacks.nvim",
         priority = 1000,
@@ -293,3 +292,5 @@ return {
         },
     },
 }
+
+

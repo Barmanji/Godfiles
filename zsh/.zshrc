@@ -151,9 +151,6 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^V' edit-command-line
 
-# TMUX same behaviour of vim
-bindkey -s '^F' '$HOME/scripts/tmux_sessionizer\n'
-
 ############################## FUNCTIONAL SHORTCUTS ##################################
 #Git SSH copy and see
 function gssh() { gh repo view "$1" --json sshUrl }
