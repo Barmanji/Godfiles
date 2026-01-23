@@ -90,14 +90,6 @@ setopt hist_find_no_dups
 alias ls='ls --color'
 alias ll='ls -la'
 alias c='clear'
-# alias xcopy='xclip -selection clipboard'
-
-#----- Directory navigation shortcuts ------#
-alias ..='cd ..'
-alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
-alias .5='cd ../../../../..'
 
 #---- Laptop functions -----#
 alias power='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage'  #Battery %age Shortcuts
@@ -145,6 +137,7 @@ alias fman='print -l ${(ok)commands} | fzf | xargs man'
 alias top='btop'
 alias tsync="tmux_env_sync && source $HOME/.zshrc"
 alias hi="echo bye"
+alias nightlight="$HOME/.config/hypr/scripts/Hyprsunset_Auto_NightLight8PM.sh"
 
 
 autoload -Uz edit-command-line
@@ -183,15 +176,6 @@ tmux_env_sync() {
   done
   echo '[tmux] Environment reloaded from tmux server!'
 }
-
-# function gilly() {
-#   if [[ -z "$1" ]]; then
-#     echo "Please provide a repository name."
-#   else
-#     git remote add origin "git@gitlab.com:barmanji/$1.git"
-#     echo "Remote origin added for repository: $1"
-#   fi
-# }
 
 #### DEFAULT EXPORTS #####
 export EDITOR=nvim
