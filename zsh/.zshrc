@@ -162,18 +162,20 @@ function gitty() {
 }
 
 tmux_env_sync() {
-  if [ -n "$TMUX" ]; then
-    tmux show-environment -g | grep -v '^-'
-  else
+  if [ -z "$TMUX" ]; then
     echo 'Not inside tmux.'
     return 1
-  fi | while IFS= read -r line; do
-    # Extract variable name and value
-    var_name="${line%%=*}"
-    var_value="${line#*=}"
-    # Export with safely quoted value
-    export "$var_name=$var_value"
-  done
+  fi
+
+  # 1. Get the environment from tmux
+  # 2. Filter out removed variables (starting with -)
+  # 3. Use 'eval' to properly handle the quoted strings tmux provides
+  while read -r line; do
+    if [[ "$line" == *=* ]]; then
+      eval "export $line"
+    fi
+  done < <(tmux show-environment | grep -v '^-')
+
   echo '[tmux] Environment reloaded from tmux server!'
 }
 
